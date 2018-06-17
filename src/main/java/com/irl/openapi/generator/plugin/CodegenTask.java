@@ -25,8 +25,6 @@ public class CodegenTask extends DefaultTask {
             extension = this.getExtensions().findByType(CodegenConfigurationExtension.class);
         }
 
-        System.out.println("futas: " + extension.getLanguage());
-
         execute(extension);
     }
 
