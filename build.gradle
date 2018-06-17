@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+ext {
+	swaggerCodegenVersion = '3.0.0-SNAPSHOT'
+	swaggerGeneratorsVersion = '3.0.0-SNAPSHOT'
+}
+
+configurations {
+ 	pluginDep
+}
+
+repositories{
+    mavenLocal()
+    mavenCentral()
+}
+  
+dependencies {
+    compile gradleApi()
+    compile group: 'io.swagger', name: 'swagger-codegen', version: "${swaggerCodegenVersion}"
+    pluginDep group: 'io.swagger', name: 'swagger-codegen', version: "${swaggerCodegenVersion}"
+    pluginDep group: 'io.swagger', name: 'swagger-generator', version: "${swaggerGeneratorsVersion}"
+}
+
+task fatJar(type: Jar) {
+    baseName = project.name + '-all'
+    from { configurations.pluginDep.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+build.dependsOn fatJar
