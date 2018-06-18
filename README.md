@@ -51,8 +51,6 @@ openapiSources {
 
 ### Todos
 
- - Publish to gradle plugin repositories
-
 License
 ----
 Apache License version 2

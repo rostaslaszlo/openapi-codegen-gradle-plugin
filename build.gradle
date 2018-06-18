@@ -1,3 +1,15 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "com.gradle.publish:plugin-publish-plugin:0.9.10"
+  }
+}
+
+apply plugin: "com.gradle.plugin-publish"
 apply plugin: 'java'
 apply plugin: 'maven'
 
@@ -29,3 +41,20 @@ task fatJar(type: Jar) {
 }
 
 build.dependsOn fatJar
+
+version = "3.0.0-SNAPSHOT-v1.0"
+group = "com.irl.openapi.generator"
+
+pluginBundle {
+  website = 'https://github.com/rostaslaszlo/openapi-codegen-gradle-plugin'
+  vcsUrl = 'https://github.com/rostaslaszlo/openapi-codegen-gradle-plugin'
+  description = 'This plugin generate sources from openapi3 files.'
+  tags = ['openapi', 'codegen', 'swagger', 'generate', 'source', 'code']
+
+  plugins {
+    openapiGenerateSourcePlugin {
+      id = 'com.irl.openapi.generator'
+      displayName = 'Gradle Openaapi codegenerator plugin'
+    }
+  }
+}
