@@ -14,8 +14,8 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 ext {
-	swaggerCodegenVersion = '3.0.0-SNAPSHOT'
-	swaggerGeneratorsVersion = '3.0.0-SNAPSHOT'
+	swaggerCodegenVersion = '3.0.0-rc1'
+	swaggerGeneratorsVersion = '3.0.0-rc1'
 }
 
 configurations {
@@ -35,14 +35,14 @@ dependencies {
 }
 
 task fatJar(type: Jar) {
-    baseName = project.name + '-all'
+    baseName = project.name
     from { configurations.pluginDep.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
 
 build.dependsOn fatJar
 
-version = "3.0.0-SNAPSHOT-v1.0"
+version = "3.0.0-rc1-v1.0"
 group = "com.irl.openapi.generator"
 
 pluginBundle {
