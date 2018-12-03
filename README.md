@@ -5,7 +5,7 @@ This plugin base on [swagger-codegen-maven-plugin](https://github.com/swagger-ap
 ### Example
 #### Plugin:
 ```
-id "com.irl.openapi.generator" version "3.0.0-SNAPSHOT-v1.0"
+id "com.irl.openapi.generator" version "3.0.0-rc1-v1.0"
 ```
 
 #### Config:
